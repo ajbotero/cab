@@ -1,72 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:orientation="vertical"
 	tools:context=".MainActivity">
 
-	<ImageView
-		android:id="@+id/iv_ichigo"
-		android:layout_width="match_parent"
-		android:layout_height="100dp"
-		android:src="@drawable/ichigo"
-		/>
+
+		<TextView
+			android:id="@+id/tv_estado"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Estado:"
+			android:textSize="24sp"
+			/>
+
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Iniciar Activity"
+			android:onClick="iniciarActivity"
+
+			/>
 
 	<Button
-		android:id="@+id/btn_accion"
-		android:layout_width="100dp"
-		android:layout_height="50dp"
-		android:text="Accion"
-		android:layout_below="@+id/iv_ichigo"
-		/>
-
-	<Button
-		android:id="@+id/btn_accion2"
-		android:layout_width="100dp"
-		android:layout_height="50dp"
-		android:text="Accion 2"
-		android:layout_below="@+id/iv_ichigo"
-		android:layout_alignParentRight="true"
-		/>
-
-
-	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/btn_accion"
-		android:paddingLeft="30dp"
-		>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Hola"
-			android:textSize="24sp"
-			android:layout_gravity="center"
-			/>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Cajas de "
-			android:textSize="24sp"
-			android:layout_marginLeft="40dp"
-
-			/>
-
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Texto"
-			android:textSize="24sp"
-			/>
+		android:text="Finalizar Activity"
+		android:onClick="finalizarActivity"
+		/>
 
 
 		
 
 	</LinearLayout>
 
-
-</RelativeLayout>
