@@ -4,65 +4,99 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ActionMode;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-    private TextView txvEstado;
-    private String ciclo_vida;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+@Bind(R.id.toolbar) Toolbar toolbar;
+    Button btnIniciar;
+    Button btnFinalizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("CLASEANDORID", "ONCREATE");
+        ButterKnife.bind(this);
 
-        txvEstado = (TextView)findViewById(R.id.tv_estado);
+        toolbar.setTitle("Aplicacion AJB");
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        setSupportActionBar(toolbar);
 
-        ciclo_vida = "Estado: onCreate";
-        txvEstado.setText(ciclo_vida);
-         }
+        btnIniciar = (Button) findViewById(R.id.btn_iniciar);
+        btnFinalizar = (Button) findViewById(R.id.btn_finalizar);
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("CLASEANDORID", "ONSTART");
+        btnIniciar.setOnClickListener(this);
+        btnFinalizar.setOnClickListener(this);
+
+        /*
+        btnIniciar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                iniciarActivity(v);
+            }
+
+
+
+        });
+
+                btnFinalizar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finalizarActivity(v);
+                    }
+                });
+
+                */
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("CLASEANDORID", "ONRESUME");
-    }
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+            return true;
+        }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("CLASEANDORID", "ONPAUSE");
-    }
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            switch (item.getItemId()) {
+                case R.id.action_msg:
+                    Toast.makeText(MainActivity.this, "hola soy un toast", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("CLASEANDORID", "ONSTOP");
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("CLASEANDORID", "ONDESTROY");
-    }
-
-    public void iniciarActivity(View view){
+    public void iniciarActivity(View view) {
         Intent starter = new Intent(MainActivity.this, SecondActivity.class);
         startActivity(starter);
 
     }
-    public void finalizarActivity(View view){
+
+    public void finalizarActivity(View view) {
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == btnIniciar.getId()) {
+            iniciarActivity(v);
+        } else if (id == btnFinalizar.getId()) {
+            finalizarActivity(v);
+        }
+
+
     }
 }
 

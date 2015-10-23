@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">CursoAndroid</string>
+	<string name="msg">Mensaje Urgente</string>
 </resources>
